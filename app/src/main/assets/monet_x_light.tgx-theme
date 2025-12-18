@@ -85,6 +85,7 @@ headerBarCallActive: a1_600
 headerBarCallMuted: n1_600
 
 statusBar: #0000
+statusBarContent: a1_600
 
 profileSectionActive: a1_600
 profileSectionActiveContent: a1_600
