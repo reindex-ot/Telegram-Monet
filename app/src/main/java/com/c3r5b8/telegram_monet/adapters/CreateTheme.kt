@@ -15,6 +15,7 @@ fun createTheme(
     isAvatarGradient: Boolean,
     isNicknameColorful: Boolean,
     isAlterOutColor: Boolean,
+	isUseDivider: Boolean,
     inputFileName: String,
     outputFileName: String,
 ) {
@@ -66,8 +67,11 @@ fun createTheme(
 
     listMain.forEach { themeImport += it + "\n" }
 
-    if (isAmoled)
-        themeImport = themeImport.replace("n1_900", "n1_1000")
+	if (isUseDivider) {
+		themeImport = themeImport
+			.replace("divider=n1_50", "divider=n1_200")
+			.replace("divider=n1_900", "divider=n1_700")
+	}
 
     if (isTelegram && isNicknameColorful)
         themeImport = themeImport.replace(
@@ -91,6 +95,10 @@ fun createTheme(
             .replace("avatar_backgroundSaved=n2_800", "avatar_backgroundSaved=n2_700")
             .replace("avatar_backgroundViolet=n2_800", "avatar_backgroundViolet=n2_700")
     }
+
+	if (isAmoled) {
+		themeImport = themeImport.replace("n1_900", "n1_1000")
+	}
 
     val generatedTheme =
         if (isTelegram)

@@ -13,8 +13,8 @@ android {
         minSdk = 31
         targetSdk = 36
 
-        versionCode = 25092801
-        versionName = "12.0.0"
+        versionCode = 26012801
+        versionName = "12.3.0"
 
         resourceConfigurations.addAll(
             arrayOf(

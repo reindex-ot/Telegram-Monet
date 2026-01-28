@@ -33,6 +33,9 @@ class MainScreenViewModel(
     private val _isAlterOutColor = MutableStateFlow(false)
     val isAlterOutColor: StateFlow<Boolean> = _isAlterOutColor.asStateFlow()
 
+	private val _isUseDivider = MutableStateFlow(false)
+    val isUseDivider: StateFlow<Boolean> = _isUseDivider.asStateFlow()
+
     private val sharedPreferences: SharedPreferences =
         contextParam.getSharedPreferences(Constants.SHARED_PREF, Context.MODE_PRIVATE)
 
@@ -91,6 +94,7 @@ class MainScreenViewModel(
                 isAvatarGradient = isAvatarGradient.value,
                 isNicknameColorful = isNicknameColorful.value,
                 isAlterOutColor = isAlterOutColor.value,
+				isUseDivider = isUseDivider.value,
                 inputFileName = inputFileName,
                 outputFileName = outputFileName,
             )
@@ -108,6 +112,7 @@ class MainScreenViewModel(
             Constants.SHARED_USE_COLORFUL_NICKNAME -> _isNicknameColorful.value = value
             Constants.SHARED_USE_GRADIENT_AVATARS -> _isAvatarGradient.value = value
             Constants.SHARED_USE_OLD_CHAT_STYLE -> _isAlterOutColor.value = value
+            Constants.SHARED_USE_USE_DIVIDER -> _isUseDivider.value = value
         }
         sharedPreferences.edit { putBoolean(settings, value) }
     }
@@ -123,6 +128,8 @@ class MainScreenViewModel(
             sharedPreferences.getBoolean(Constants.SHARED_USE_COLORFUL_NICKNAME, true)
         _isAlterOutColor.value =
             sharedPreferences.getBoolean(Constants.SHARED_USE_OLD_CHAT_STYLE, true)
+		_isUseDivider.value =
+			sharedPreferences.getBoolean(Constants.SHARED_USE_USE_DIVIDER, false)
     }
 
 }
